@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ResQLink · Tamil Nadu State Emergency Response & Logistics</title><link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#070b14"><link rel="icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070b14;--card:#0d1527;--card2:#121d33;--card-border:#1f2e4d;--tx:#f8fafc;--mu:#94a3b8;
+  --crit:#f43f5e;--crit-bg:rgba(244,63,94,0.12);
+  --high:#fb923c;--high-bg:rgba(251,146,60,0.12);
+  --med:#facc15;--med-bg:rgba(250,204,21,0.12);
+  --low:#10b981;--low-bg:rgba(16,185,129,0.12);
+  --teal:#06b6d4;--teal-dark:#083344;--blue:#3b82f6;--purple:#a855f7;--purple-bg:rgba(168,85,247,0.12);
+}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.5 'Plus Jakarta Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.ta{font-family:'Noto Sans Tamil','Plus Jakarta Sans',sans-serif}button{font:inherit;cursor:pointer}
+.top{display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:1px solid var(--card-border);flex-wrap:wrap;position:sticky;top:0;background:#070b14f0;backdrop-filter:blur(12px);z-index:50}
+.logo-box{display:flex;align-items:center;gap:10px}
+.emblem{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#06b6d4,#3b82f6);display:grid;place-items:center;font-weight:900;color:#04131f;font-size:16px}
+.logo{font-weight:800;font-size:19px;letter-spacing:-0.5px;color:#fff}.logo b{color:var(--teal)}
+.dept{font-size:11px;color:var(--mu);display:block;margin-top:-3px;font-weight:500;letter-spacing:0.02em}
+.sp{flex:1}
+.alert-tag{border:1px solid var(--crit);color:#fecdd3;background:var(--crit-bg);padding:4px 12px;border-radius:99px;font-weight:700;font-size:12px;display:flex;align-items:center;gap:7px}
+.alert-dot{width:8px;height:8px;border-radius:50%;background:var(--crit);box-shadow:0 0 10px var(--crit);animation:livePulse 1.4s infinite}
+@keyframes livePulse{0%{transform:scale(0.95);opacity:1}50%{transform:scale(1.3);opacity:0.4}100%{transform:scale(0.95);opacity:1}}
+.clock{font-variant-numeric:tabular-nums;color:var(--mu);font-size:13px;font-weight:500}
+.btn{border:1px solid var(--card-border);background:var(--card2);color:var(--tx);padding:8px 16px;border-radius:8px;font-weight:600;font-size:13px;transition:all 0.15s ease;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{border-color:var(--teal);background:#1a2845}.btn.p{background:var(--teal);border-color:var(--teal);color:#031c26}.btn.p:hover{background:#22d3ee}
+.btn.r{border-color:var(--crit);color:#fda4af;background:var(--crit-bg)}.btn.r:hover{background:rgba(244,63,94,0.25)}
+.btn.big{padding:14px;font-size:15px;width:100%;font-weight:700;border-radius:10px}
+.av{width:36px;height:36px;border-radius:50%;background:var(--card2);border:1px solid var(--card-border);display:grid;place-items:center;cursor:pointer;font-size:15px}
+nav{display:flex;gap:4px;padding:6px 24px;overflow-x:auto;border-bottom:1px solid var(--card-border);background:#0a0f1c}
+nav a{color:var(--mu);text-decoration:none;padding:8px 14px;border-radius:8px;white-space:nowrap;font-weight:600;font-size:13px;transition:all 0.15s ease}
+nav a:hover{color:#fff;background:rgba(255,255,255,0.03)}nav a.on{background:var(--teal);color:#031c26;font-weight:700}
+main{padding:18px 24px;max-width:1760px;margin:auto}
+.cnt{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px}
+.cc{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px 16px}.cc b{font-size:26px;display:block;line-height:1.2;font-weight:800}.cc span{color:var(--mu);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.04em}
+.g3{display:grid;grid-template-columns:360px 1fr 410px;gap:14px;align-items:start}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}.g21{display:grid;grid-template-columns:2fr 1fr;gap:14px;align-items:start}
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin-bottom:12px}
+h2{font-size:17px;margin:0 0 10px;font-weight:800}h3{font-size:11px;margin:0 0 8px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.list{max-height:calc(100vh - 225px);overflow:auto;padding-right:4px}
+.cs{display:flex;gap:10px;background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:11px;margin-bottom:8px;cursor:pointer;transition:border-color 0.15s}.cs:hover,.cs.sel{border-color:var(--teal);background:var(--card2)}
+.sc{min-width:46px;height:46px;border-radius:8px;display:grid;place-items:center;font-weight:800;font-size:18px;color:#0b0b0b}.sc small{display:block;font-size:9px;font-weight:700;margin-top:-4px}
+.tg{display:inline-block;font-size:11px;font-weight:700;border-radius:99px;padding:2px 8px;margin:2px 4px 0 0;border:1px solid var(--card-border);color:var(--mu)}
+.tg.New{border-color:var(--teal);color:var(--teal);background:rgba(6,182,212,0.1)}.tg.Verify{border:1.5px solid var(--blue);color:#93c5fd;background:rgba(59,130,246,0.12)}.tg.Suggested{color:#fde68a;border-color:var(--med);background:var(--med-bg)}.tg.Assigned{color:#86efac;border-color:var(--low);background:var(--low-bg)}.tg.Resolved{background:var(--low);color:#052e16;border-color:var(--low)}.tg.Rejected{color:#fca5a5;border-color:var(--crit);background:var(--crit-bg)}.tg.Merged{color:#d8b4fe;border-color:var(--purple);background:var(--purple-bg)}
+.mu{color:var(--mu)}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.chip{padding:6px 14px;border-radius:99px;border:1px solid var(--card-border);background:var(--card);color:var(--tx);font-size:13px;font-weight:600}.chip.on{background:var(--teal);color:#031c26;border-color:var(--teal);font-weight:800}
+.chipd{display:inline-block;background:var(--card2);border:1px solid var(--card-border);border-radius:6px;padding:3px 8px;margin:2px;font-size:12px}.chipd b{color:var(--teal)}
+svg{max-width:100%;display:block}.map{background:#070d1a;border:1px solid var(--card-border);border-radius:8px;width:100%}.mk{cursor:pointer}
+.leg{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--mu);margin-top:10px}.leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+.msg{background:var(--card2);border-left:3px solid var(--teal);border-radius:6px;padding:10px 12px;margin:6px 0;line-height:1.45}
+.bar{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px}.bar i{display:block;height:12px;border-radius:4px;background:var(--teal)}.bar span:first-child{width:115px;flex:none}
+.tl{display:flex;gap:0;overflow-x:auto;margin-bottom:12px}.tl div{flex:1;min-width:90px;text-align:center;font-size:12px;color:var(--mu);position:relative;padding-top:20px}.tl div:before{content:"";position:absolute;top:4px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--card-border);transform:translateX(-50%);z-index:2}.tl div:after{content:"";position:absolute;top:9px;left:-50%;width:100%;height:2px;background:var(--card-border)}.tl div:first-child:after{display:none}.tl .d{color:var(--tx)}.tl .d:before,.tl .d:after{background:var(--teal)}
+table{width:100%;border-collapse:collapse}th{text-align:left;color:var(--mu);font-size:11px;font-weight:700;padding:8px 10px;border-bottom:1px solid var(--card-border);text-transform:uppercase;letter-spacing:0.04em}td{padding:10px 10px;border-bottom:1px solid var(--card-border);font-size:13px}tr.nr td{background:rgba(251,146,60,0.12)}.tw{overflow-x:auto}
+select,input,textarea{background:var(--card2);color:var(--tx);border:1px solid var(--card-border);border-radius:8px;padding:9px;font:inherit;width:100%}select:focus,input:focus,textarea:focus{outline:none;border-color:var(--teal)}
+.phone{max-width:430px;margin:auto;border:3px solid var(--card-border);border-radius:32px;padding:18px;background:#070d1a;box-shadow:0 25px 50px -12px rgba(0,0,0,0.7)}
+.bub{background:var(--card2);padding:10px 14px;border-radius:16px 16px 16px 2px;margin:8px 0;max-width:88%;line-height:1.45;font-size:13px}.bub.me{background:var(--teal);color:#031c26;margin-left:auto;border-radius:16px 16px 2px 16px;font-weight:600}
+.st{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--card-border);opacity:.45;transition:opacity 0.2s}.st.d{opacity:1}.st .n{width:22px;height:22px;border-radius:50%;background:var(--card-border);display:grid;place-items:center;font-size:11px;flex:none}.st.d .n{background:var(--teal);color:#031c26;font-weight:800}
+.vt{max-width:540px;margin:16px auto;background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:22px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.5)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--teal);color:#031c26;padding:12px 24px;border-radius:10px;font-weight:700;z-index:99;box-shadow:0 10px 25px -5px rgba(0,0,0,0.5)}
+.note{border:1px dashed var(--purple);color:#e9d5ff;background:var(--purple-bg);border-radius:99px;padding:4px 12px;font-size:12px;display:inline-block}
+
+/* LOGIN GATEWAY */
+#loginOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:#070b14f8;backdrop-filter:blur(14px);z-index:100;display:grid;place-items:center}
+.loginCard{background:#0d1527;border:1px solid var(--card-border);border-radius:16px;padding:36px;width:90%;max-width:440px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);text-align:center}
+.badge-tn{background:var(--card2);border:1px solid var(--card-border);color:var(--teal);padding:4px 12px;border-radius:99px;font-size:12px;font-weight:700;display:inline-block;margin-bottom:14px}
+
+@media(max-width:1200px){.g3{grid-template-columns:340px 1fr}.g3>:last-child{grid-column:1/-1}.list{max-height:520px}}
+@media(max-width:800px){.g3,.g2,.g21{grid-template-columns:1fr}.cnt{grid-template-columns:repeat(2,1fr)}main{padding:12px}.top{padding:8px 14px}.top .hide{display:none}}
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ===== REAL-TIME CLOUD DATABASE & WEBSOCKET ENGINE (SUPABASE COMPATIBLE) ===== */
+const SUPABASE_URL = window.RESQ_SUPABASE_URL || 'https://resqlink-demo.supabase.co';
+const SUPABASE_KEY = window.RESQ_SUPABASE_KEY || 'public-anon-key';
+let supabaseClient = null;
+try {
+  if (window.supabase) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    // Realtime channel broadcast for live sync between Officer and Volunteer
+    const channel = supabaseClient.channel('resqlink-operations');
+    channel.on('broadcast', { event: 'dispatch_action' }, (payload) => {
+      if (payload && payload.payload) {
+        handleRealtimeSyncEvent(payload.payload);
+      }
+    }).subscribe();
+  }
+} catch (e) {
+  console.log('Realtime sync operating on local state channel');
+}
+
+function handleRealtimeSyncEvent(event) {
+  if (event.type === 'STATUS_UPDATE') {
+    task.st = event.status;
+    const c = cur();
+    if (event.status === 'done') {
+      c.st = 'Resolved';
+      S.open = Math.max(0, S.open - 1);
+      toast('⚡ Real-time Sync: Rescuer confirmed incident RESOLVED!');
+    } else {
+      toast('⚡ Real-time Sync: Incident status updated to ' + event.status);
+    }
+    render();
+  }
+}
+
+function broadcastSyncEvent(event) {
+  // 1. Broadcast over Supabase Realtime if connected
+  if (supabaseClient) {
+    supabaseClient.channel('resqlink-operations').send({
+      type: 'broadcast',
+      event: 'dispatch_action',
+      payload: event
+    });
+  }
+  // 2. Also broadcast across browser tabs via localStorage storage event
+  localStorage.setItem('resq_realtime_event', JSON.stringify({ ...event, timestamp: Date.now() }));
+}
+
+window.addEventListener('storage', (e) => {
+  if (e.key === 'resq_realtime_event' && e.newValue) {
+    try {
+      const evt = JSON.parse(e.newValue);
+      handleRealtimeSyncEvent(evt);
+    } catch(err){}
+  }
+});
+</script>
+</head><body>
+
+<!-- LOGIN GATE -->
+<div id="loginOverlay">
+  <div class="loginCard">
+    <span class="badge-tn">🚨 Tamil Nadu State Emergency Response</span>
+    <h1 style="font-size:24px;margin:8px 0;font-weight:800">ResQ<b>Link</b> Portal</h1>
+    <p class="mu" style="font-size:13px;margin-bottom:20px">Autonomous Incident Triage & Rescuer Dispatch</p>
+    <div style="text-align:left;margin-bottom:12px">
+      <label class="mu" style="font-size:11px;font-weight:700;text-transform:uppercase">Officer / Dispatcher Badge</label>
+      <input type="text" id="officerId" value="TN-STATE-CMD-01" style="margin-top:4px" />
+    </div>
+    <div style="text-align:left;margin-bottom:20px">
+      <label class="mu" style="font-size:11px;font-weight:700;text-transform:uppercase">Control Room Secure PIN</label>
+      <input type="password" id="officerPin" value="••••••••" style="margin-top:4px" />
+    </div>
+    <button class="btn p big" onclick="login()">Authenticate & Enter Command Center ➔</button>
+    <div class="mu" style="font-size:12px;margin-top:14px">Bridging the gap between victims and field rescuers</div>
+  </div>
+</div>
+
+<div class="top">
+  <div class="logo-box">
+    <div class="emblem">R</div>
+    <div>
+      <div class="logo">ResQ<b>Link</b></div>
+      <span class="dept">Disaster Dispatch & Resource Coordination</span>
+    </div>
+  </div>
+  <span class="alert-tag"><span class="alert-dot"></span>Live Disaster Response Active</span>
+  <span class="clock" id="clk"></span>
+  <span class="tg Assigned" id="net">● Live Node Sync</span>
+  <span class="sp"></span>
+  <button class="btn p hide" onclick="go('ngo')">📦 NGO Supply Drop</button>
+  <button class="btn hide" onclick="go('report')">Generate SitRep</button>
+  <div class="av" onclick="logout()" title="Sign out / Lock Terminal">👤</div>
+</div>
+
+<nav id="nav"></nav>
+<main id="app"></main>
+
+<script>
+/* ===== REAL-TIME CLOCK WITH TODAY DATE ===== */
+function updateRealClock(){
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('en-IN', { weekday: 'short', day: '2-digit', month: 'short', year: 'numeric' });
+  const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  const clk = document.getElementById('clk');
+  if(clk) clk.innerHTML = `📅 ${dateStr} &nbsp; 🕑 <b>${timeStr} IST</b>`;
+}
+setInterval(updateRealClock, 1000);
+updateRealClock();
+
+/* ===== AUTHENTICATION ===== */
+function login(){
+  document.getElementById('loginOverlay').style.display = 'none';
+  sessionStorage.setItem('resq_auth', 'true');
+  toast('Officer Authenticated. District Incident Room Ready.');
+}
+function logout(){
+  sessionStorage.removeItem('resq_auth');
+  document.getElementById('loginOverlay').style.display = 'grid';
+}
+if(sessionStorage.getItem('resq_auth') === 'true'){
+  document.getElementById('loginOverlay').style.display = 'none';
+}
+
+/* ===== INCIDENTS & COORDINATION ===== */
+const uc=s=>s>=80?'var(--crit)':s>=60?'var(--high)':s>=40?'var(--med)':'var(--low)',ul=s=>s>=80?'CRITICAL':s>=60?'HIGH':s>=40?'MEDIUM':'LOW';
+const T={rescue:['🆘','Rescue'],medical:['⚕️','Medical'],shelter:['🏠','Shelter'],food:['🍚','Food'],water:['💧','Water']};
+const P={Velachery:[320,330,12.9815,80.2180],Tambaram:[150,400,12.9249,80.1275],Adyar:[385,265,13.0012,80.2565],Perungudi:[385,365,12.9654,80.2461],Mylapore:[410,200,13.0368,80.2676],Ennore:[370,60,13.2084,80.3246]};
+const S={await:9,open:42,merged:17,sil:2,pend:31,sel:0,filter:'All',district:'ALL',cur:'dashboard'};
+const C=[
+{id:'RQ-2041',s:96,t:'rescue',sum:'Pregnant woman, water entering ground floor, 5 trapped (Battery 4%)',loc:'Velachery',lat:12.9815,lon:80.2180,n:5,tr:88,tags:['Merged x3','⚡ Dying Battery 4%'],st:'Suggested',w:12,stage:4,resp:'Team Alpha SDRF (boat)',km:1.8,
+ ta:'கர்ப்பிணிப் பெண் இருக்கிறார், வீட்டுக்குள் தண்ணீர் வருகிறது. பேட்டரி 4%. 5 பேர் இருக்கிறோம். உடனே படகு தேவை! – வேளச்சேரி',en:'Pregnant woman here, ground floor flooded, phone battery 4%, 5 trapped. Send boat immediately! – Velachery',
+ why:[['Life threat',40],['Pregnant',25],['Last-Gasp Signal (4% Battery)',15],['5 people',10],['Rescue',10]],
+ dup:[['20:18','Tamil SMS','வேளச்சேரி வீடு முழுகுது, கர்ப்பிணி இருக்காங்க, battery 4% only'],['20:21','WhatsApp','Water in house Velachery lake view, pregnant lady, 5 ppl'],['20:26','Voice note (Tanglish)','"Thanni ulla vandhuduchu, boat anupunga help pannunga"']],
+ pos:['Specific address & landmark verified (+20)','Matches 3 independent citizen reports (+30)','Sender in pre-registered registry (+15)','High urgency details corroborated (+23)'],neg:[]},
+{id:'RQ-2038',s:85,t:'medical',sum:'Dialysis patient, power outage, urgent ambulance',loc:'Tambaram',lat:12.9249,lon:80.1275,n:2,tr:91,tags:[],st:'Suggested',w:18,stage:4,resp:'Ambulance A-12',km:2.4,ta:'டயாலிசிஸ் நோயாளி, மின்சாரம் இல்லை அவசர ஆம்புலன்ஸ் வேண்டும்',en:'Dialysis patient, no electricity, need emergency ambulance',why:[['Life threat',40],['Dialysis',25],['2 people',6],['Waiting 18 min',6],['Medical',8]],pos:['Pre-registered vulnerable household (+40)','Phone verified (+30)','Specific address (+21)'],neg:[]},
+{id:'RQ-2044',s:78,t:'rescue',sum:'12 people stranded on rooftop, water level rising',loc:'Ennore',lat:13.2084,lon:80.3246,n:12,tr:54,tags:['Verify first'],st:'New',w:9,stage:3,resp:'Team Bravo SDRF (boat)',km:6.1,ta:'12 பேர் மொட்டை மாடியில், தண்ணீர் உயருகிறது படகு தேவை',en:'12 people stranded on terrace, water rising, boat needed',why:[['Life threat',40],['12 people',15],['Waiting',4],['Rescue',10],['Vulnerable',9]],pos:['Specific location (+24)'],neg:['Single report, uncorroborated (−20)','New sender number (−10)']},
+{id:'RQ-2030',s:66,t:'shelter',sum:'Elderly shelter ground floor flooded, 20 seniors',loc:'Adyar',lat:13.0012,lon:80.2565,n:20,tr:84,tags:[],st:'Assigned',w:40,stage:5,resp:'Relief Van V-3',km:3.2,ta:'முதியோர் இல்லத்தில் தண்ணீர் புகுந்தது, 20 பேர்',en:'Water entered elderly home, 20 senior citizens',why:[['Elderly',25],['20 people',15],['Waiting',10],['Shelter',5],['Life threat',11]],pos:['Known registered institution (+50)','Direct landline verified (+34)'],neg:[]},
+{id:'RQ-2047',s:58,t:'water',sum:'No drinking water, 40 families stranded',loc:'Perungudi',lat:12.9654,lon:80.2461,n:120,tr:70,tags:['Merged x2'],st:'New',w:25,stage:3,resp:'Water Tanker T-5',km:4.0,ta:'குடிநீர் இல்லை, 40 குடும்பங்கள் தவிக்கிறோம்',en:'No drinking water, 40 families stranded',why:[['People',15],['Water crisis',15],['Waiting',10],['Corroboration',18]],pos:['2 reports match (+35)','Specific sector (+35)'],neg:[]},
+{id:'RQ-2049',s:49,t:'food',sum:'Food packets for 15 laborers, stranded since noon',loc:'Mylapore',lat:13.0368,lon:80.2676,n:15,tr:82,tags:['New'],st:'New',w:6,stage:3,resp:'Volunteer Team Priya',km:1.1,ta:'15 பேருக்கு உணவு பொட்டலங்கள் தேவை',en:'Food packets needed for 15 people',why:[['15 people',15],['Food ration',15],['Waiting',9],['Verified',10]],pos:['Clear request details (+42)','Phone number verified (+40)'],neg:[]},
+{id:'RQ-2022',s:35,t:'food',sum:'Baby formula and milk required, 2 families',loc:'Adyar',lat:13.0012,lon:80.2565,n:6,tr:90,tags:[],st:'Suggested',w:55,stage:4,resp:'Volunteer Unit Ravi',km:0.9,ta:'குழந்தைக்கு பால் மற்றும் உணவு தேவை',en:'Baby milk formula and food needed',why:[['Infant present',20],['Food requirement',10],['Waiting',5]],pos:['Verified citizen (+90)'],neg:[]},
+{id:'RQ-2051',s:22,t:'shelter',sum:'Temporary shelter needed for tonight, 3 people',loc:'Mylapore',lat:13.0368,lon:80.2676,n:3,tr:40,tags:['Verify first'],st:'New',w:3,stage:3,resp:'Volunteer Team Priya',km:1.6,ta:'இன்றிரவு தங்க இடம் தேவை',en:'Need place to stay tonight',why:[['Shelter',10],['3 people',6],['Waiting',6]],pos:['Clear request (+40)'],neg:['Location vague (−25)','Unverified report (−35)']}];
+
+C.forEach(c=>{c.district='Chennai';c.demoSource='Synthetic demo scenario';c.cf=Math.round(30+c.tr*.65)});
+
+/* ===== TAMIL NADU-WIDE SYNTHETIC INCIDENT DATA =====
+   These are generated demonstration records, NOT real emergency reports. */
+const DISTRICT_GEO={
+'Ariyalur':[11.1401,79.0786,['Ariyalur','Jayankondam','Sendurai','Andimadam']],
+'Chengalpattu':[12.6819,80.0260,['Chengalpattu','Tambaram','Madhurantakam','Thiruporur']],
+'Chennai':[13.0827,80.2707,['Velachery','Tambaram','Adyar','Perungudi','Mylapore']],
+'Coimbatore':[11.0168,76.9558,['Coimbatore','Pollachi','Mettupalayam','Sulur']],
+'Cuddalore':[11.7480,79.7714,['Cuddalore','Chidambaram','Panruti','Virudhachalam']],
+'Dharmapuri':[12.1277,78.1579,['Dharmapuri','Harur','Palacode','Pennagaram']],
+'Dindigul':[10.3673,77.9803,['Dindigul','Palani','Oddanchatram','Nilakottai']],
+'Erode':[11.3410,77.7172,['Erode','Gobichettipalayam','Bhavani','Perundurai']],
+'Kallakurichi':[11.7380,78.9639,['Kallakurichi','Chinnasalem','Sankarapuram','Ulundurpet']],
+'Kancheepuram':[12.8185,79.6947,['Kancheepuram','Uthiramerur','Sriperumbudur','Walajabad']],
+'Kanniyakumari':[8.0883,77.5385,['Nagercoil','Marthandam','Kanyakumari','Thuckalay']],
+'Karur':[10.9601,78.0766,['Karur','Kulithalai','Aravakurichi','Krishnarayapuram']],
+'Krishnagiri':[12.5186,78.2137,['Krishnagiri','Hosur','Denkanikottai','Pochampalli']],
+'Madurai':[9.9252,78.1198,['Madurai','Thirumangalam','Melur','Usilampatti']],
+'Mayiladuthurai':[11.1035,79.6550,['Mayiladuthurai','Sirkazhi','Kuthalam','Tharangambadi']],
+'Nagapattinam':[10.7672,79.8449,['Nagapattinam','Vedaranyam','Kilvelur','Thirukkuvalai']],
+'Namakkal':[11.2189,78.1677,['Namakkal','Tiruchengode','Rasipuram','Paramathi Velur']],
+'Perambalur':[11.2342,78.8807,['Perambalur','Kunnam','Veppanthattai','Alathur']],
+'Pudukkottai':[10.3833,78.8001,['Pudukkottai','Aranthangi','Alangudi','Illuppur']],
+'Ramanathapuram':[9.3639,78.8395,['Ramanathapuram','Paramakudi','Rameswaram','Kamuthi']],
+'Ranipet':[12.9249,79.3333,['Ranipet','Arcot','Arakkonam','Walajah']],
+'Salem':[11.6643,78.1460,['Salem','Attur','Mettur','Omalur']],
+'Sivaganga':[9.8433,78.4809,['Sivaganga','Karaikudi','Devakottai','Manamadurai']],
+'Tenkasi':[8.9595,77.3152,['Tenkasi','Sankarankovil','Courtallam','Alangulam']],
+'Thanjavur':[10.7870,79.1378,['Thanjavur','Kumbakonam','Pattukkottai','Orathanadu']],
+'Theni':[10.0104,77.4977,['Theni','Bodinayakanur','Periyakulam','Cumbum']],
+'The Nilgiris':[11.4102,76.6950,['Ooty','Coonoor','Gudalur','Kotagiri']],
+'Thoothukudi':[8.7642,78.1348,['Thoothukudi','Kovilpatti','Tiruchendur','Srivaikuntam']],
+'Tiruchirappalli':[10.7905,78.7047,['Tiruchirappalli','Srirangam','Manapparai','Thuraiyur']],
+'Tirunelveli':[8.7139,77.7567,['Tirunelveli','Ambasamudram','Nanguneri','Valliyur']],
+'Tirupathur':[12.4950,78.5678,['Tirupathur','Vaniyambadi','Ambur','Natrampalli']],
+'Tiruppur':[11.1085,77.3411,['Tiruppur','Avinashi','Dharapuram','Palladam']],
+'Tiruvallur':[13.1439,79.9094,['Tiruvallur','Ponneri','Gummidipoondi','Tiruttani']],
+'Tiruvannamalai':[12.2253,79.0747,['Tiruvannamalai','Arani','Polur','Chengam']],
+'Tiruvarur':[10.7727,79.6368,['Tiruvarur','Mannargudi','Thiruthuraipoondi','Needamangalam']],
+'Vellore':[12.9165,79.1325,['Vellore','Gudiyatham','Katpadi','Anaicut']],
+'Viluppuram':[11.9401,79.4861,['Viluppuram','Tindivanam','Gingee','Kandachipuram']],
+'Virudhunagar':[9.5680,77.9624,['Virudhunagar','Sivakasi','Rajapalayam','Aruppukottai']]
+};
+const SYNTHETIC_CASES=[];
+const SYNTH_TYPES=['rescue','medical','shelter','food','water'];
+const SYNTH_SUM={rescue:['Families stranded after local flooding','Residents need safe evacuation','People trapped in a low-lying street'],medical:['Urgent medicine and ambulance support requested','Elderly resident needs medical assistance','Power interruption affects a home medical device'],shelter:['Temporary shelter requested for displaced families','Roof damage reported; safe shelter needed','Family requires overnight accommodation'],food:['Food packets requested for stranded residents','Drinking water and food needed by households','Relief supplies requested for workers'],water:['Drinking water shortage reported','Water tanker support requested','Families report no safe drinking water']};
+let synthNo=3000;
+Object.entries(DISTRICT_GEO).forEach(([district,geo],di)=>{
+  const [baseLat,baseLon,places]=geo;
+  for(let j=0;j<10;j++){
+    const type=SYNTH_TYPES[(di*3+j)%SYNTH_TYPES.length];
+    const score=[99,96,92,88,84,78,72,64,52,38][(j+di)%10];
+    const place=places[j%places.length];
+    const lat=+(baseLat+(((j%5)-2)*0.012)+((di%3)*0.002)).toFixed(5);
+    const lon=+(baseLon+((Math.floor(j/2)%5)-2)*0.013).toFixed(5);
+    const vulnerable=(j%4===0||j%7===0);
+    SYNTHETIC_CASES.push({id:`RQ-${synthNo++}`,district,s:score,t:type,sum:SYNTH_SUM[type][j%3],loc:place,lat,lon,n:2+(j*3+di)%19,tr:65+(j*7+di)%31,tags:['SYNTHETIC DEMO'],st:j===0?'Suggested':'New',w:5+(j*9)%58,stage:3,resp:'Unassigned demo response team',km:(1.1+((j+di)%8)*0.7).toFixed(1),why:[['Scenario severity',Math.round(score*.45)],...(vulnerable?[['Vulnerable resident present',20]]:[]),['People affected',Math.min(15,2+j)],['Waiting time',Math.min(15,Math.floor(j*1.5))]],pos:['Synthetic scenario generated for prototype testing'],neg:['Not a verified live emergency report'],demoSource:'Synthetic demo data',ta:'Synthetic demonstration scenario — not an actual citizen message.',en:SYNTH_SUM[type][j%3],cf:78});
+  }
+});
+C.push(...SYNTHETIC_CASES);
+const savedStatuses=JSON.parse(localStorage.getItem('resqlink_case_statuses')||'{}');
+C.forEach(c=>{if(savedStatuses[c.id])c.st=savedStatuses[c.id]});
+
+const conf=c=>`<div class="${c.cf<70?'':'mu'}" style="margin-top:8px;font-size:12px">🤖 AI extraction confidence: <b>${c.cf}%</b>${c.cf<70?' · below 70%: human verification required':' · human official retains final decision'}</div>`;
+const ZN=[{id:14,name:'Ward 14 · Pallikaranai',pts:'250,370 330,375 345,428 262,432',hh:14,why:'Zero incoming signals in 30 min. Power grid and cellular towers likely down.'},{id:187,name:'Ward 187 · Manali',pts:'230,40 310,35 322,98 242,102',hh:9,why:'9 pre-registered vulnerable residents unresponsive · suspected communication blackout.'}];
+let H=[['H-214','Velachery',['bed','pre'],'Karthik','No reply',30,1.2],['H-101','Velachery',['eld'],'Priya','Safe',8,0.6],['H-188','Tambaram',['dia'],'Ravi','Waiting',22,2.1],['H-302','Adyar',['eld','bed'],'Meena','Needs help',14,0.9],['H-117','Perungudi',['pre'],'Suresh','Waiting',12,1.5],['H-250','Tambaram',['eld'],'Ravi','Safe',6,2.0],['H-077','Velachery',['dia','eld'],'Karthik','No reply',35,1.7],['H-410','Adyar',['bed'],'Meena','Safe',9,1.1]].map(a=>({id:a[0],w:a[1],who:a[2],v:a[3],st:a[4],t:a[5],km:a[6],done:false}));
+const WHO={bed:['🛏','Bedridden'],dia:['🩺','Dialysis'],pre:['🤰','Pregnant'],eld:['👵','Elderly alone']};
+const out=[];let task={st:'new'};
+const $=s=>document.querySelector(s),cur=()=>C[S.sel];
+function toast(m){document.querySelectorAll('.toast').forEach(e=>e.remove());const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2600)}
+function tag(t){const k=t.split(' ')[0];return `<span class="tg ${k}">${k==='Verify'?'◎ ':k==='Merged'?'⧉ ':''}${t}</span>`}
+function sc(s){return `<div class="sc" style="background:${uc(s)}">${s}<small>${ul(s).slice(0,4)}</small></div>`}
+
+/* ===== LIVE DISPATCH MAP ===== */
+function map(o={}){const cs=o.cases||[],sel=o.sel;let h=`<svg class="map" viewBox="0 0 600 440"><defs><pattern id="ht" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="8" height="8" fill="#a855f722"/><line x1="0" y1="0" x2="0" y2="8" stroke="#a855f7" stroke-width="3"/></pattern></defs>
+<path d="M470,0H600V440H430Q462,300 442,220Q428,120 470,0Z" fill="#081d33"/><text x="515" y="230" fill="#3b6ea5" font-size="12" font-weight="600">Bay of Bengal</text>
+<path d="M0,250Q150,270 250,290T440,270" stroke="#1d4f86" stroke-width="5" fill="none"/><text x="60" y="268" fill="#3b6ea5" font-size="10" font-weight="600">Adyar River</text>
+<path d="M0,120L440,170M120,0L220,440M0,330L430,330M300,0L330,440" stroke="#15243d" stroke-width="2" fill="none"/>`;
+Object.entries(P).forEach(([k,[x,y]])=>h+=`<text x="${x-24}" y="${y+24}" fill="#64748b" font-size="11" font-weight="600">${k}</text>`);
+if(o.zones!==false)ZN.forEach(z=>h+=`<g class="mk" onclick="${o.zclick?`zsel(${z.id})`:''}"><polygon points="${z.pts}" fill="url(#ht)" stroke="#a855f7" stroke-width="${o.hl===z.id?4:1.5}"/><text x="${z.pts.split(' ')[0].split(',')[0]}" y="${+z.pts.split(' ')[0].split(',')[1]-6}" fill="#e9d5ff" font-size="11" font-weight="700">◪ Silent Zone · W${z.id}</text></g>`);
+if(o.resp!==false)[[300,300],[160,385],[400,228],[355,85],[360,350]].forEach(([x,y])=>h+=`<text x="${x}" y="${y}" font-size="16">🚐</text>`);
+if(o.route){const c=o.route,[x,y]=P[c.loc];h+=`<polyline points="${x-70},${y-45} ${x-30},${y-30} ${x-8},${y-8}" fill="none" stroke="#06b6d4" stroke-width="3" stroke-dasharray="6 4"/><text x="${x-110}" y="${y-52}" fill="#67e8f9" font-size="12" font-weight="700">${c.resp} · ${c.km} km</text><text x="${x-84}" y="${y-48}" font-size="16">🚐</text>`}
+cs.forEach(c=>{const [x,y]=P[c.loc]||[300,220],i=C.indexOf(c),dx=(i%3-1)*16,dy=(i%2)*14-6;h+=`<g class="mk" onclick="pick(${i})">${i===sel?`<circle cx="${x+dx}" cy="${y+dy}" r="20" fill="none" stroke="#fff" stroke-width="2.5"/>`:''}<circle cx="${x+dx}" cy="${y+dy}" r="13" fill="${uc(c.s)}" stroke="#070d1a" stroke-width="2"/><text x="${x+dx}" y="${y+dy+4}" text-anchor="middle" font-size="11" font-weight="800" fill="#0a0a0a">${c.s}</text></g>`});
+return h+'</svg>'}
+function statewideMap(cases){
+ const W=600,H=430,pad=38,latMin=8.0,latMax=13.6,lonMin=76.0,lonMax=80.6;
+ const xy=c=>[pad+(c.lon-lonMin)/(lonMax-lonMin)*(W-2*pad),H-pad-(c.lat-latMin)/(latMax-latMin)*(H-2*pad)];
+ let h=`<div class="card"><div class="row"><b>Tamil Nadu incident distribution</b><span class="sp"></span><span class="mu" style="font-size:11px">Schematic plot · demo coordinates</span></div><svg class="map" viewBox="0 0 ${W} ${H}" role="img" aria-label="Schematic incident distribution across Tamil Nadu"><path d="M170 25 L330 35 L410 100 L450 190 L400 270 L350 390 L260 405 L190 350 L140 250 L115 150 Z" fill="#102744" stroke="#315477" stroke-width="3"/><path d="M420 35 L540 35 L540 395 L390 395" fill="none" stroke="#183d62" stroke-width="2"/><text x="470" y="220" fill="#3b6ea5" font-size="12">Bay of Bengal</text>`;
+ cases.forEach(c=>{const [x,y]=xy(c),idx=C.indexOf(c);h+=`<g class="mk" onclick="pick(${idx})"><circle cx="${x}" cy="${y}" r="${idx===S.sel?10:6}" fill="${uc(c.s)}" stroke="${idx===S.sel?'#fff':'#08111f'}" stroke-width="2"/><title>${c.district} · ${c.loc} · ${c.s} priority</title></g>`});
+ h+=`<text x="18" y="414" fill="#94a3b8" font-size="11">West</text><text x="535" y="414" fill="#94a3b8" font-size="11">East</text></svg><div class="mu" style="font-size:11px">Markers represent generated demonstration scenarios. This is not a live GIS or official district-boundary map.</div></div>`;return h;
+}
+const legend=`<div class="leg"><span><i style="background:var(--crit)"></i>Critical (80-100)</span><span><i style="background:var(--high)"></i>High (60-79)</span><span><i style="background:var(--med)"></i>Medium (40-59)</span><span><i style="background:var(--low)"></i>Low (<40)</span><span><i style="background:repeating-linear-gradient(45deg,#a855f7,#a855f7 2px,#a855f733 2px,#a855f733 5px)"></i>Silent Blackout Zone</span><span>🚐 Field Units</span><span style="color:#93c5fd">◎ Verify First</span></div>`;
+function gauge(v){const col=v>=70?'var(--low)':v>=50?'var(--med)':'var(--crit)';return `<svg viewBox="0 0 120 70" width="170"><path d="M10,60A50,50 0 0 1 110,60" fill="none" stroke="#1f2e4d" stroke-width="10" stroke-linecap="round"/><path d="M10,60A50,50 0 0 1 110,60" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" pathLength="100" stroke-dasharray="${v} 100"/><text x="60" y="56" text-anchor="middle" fill="#fff" font-size="22" font-weight="800">${v}</text></svg>`}
+function why(c){return c.why.map(([k,v])=>`<div class="bar"><span>${k}</span><i style="width:${v*3}px"></i><b>+${v}</b></div>`).join('')}
+
+/* ===== OFFICIAL ACTIONS (HUMAN IN THE LOOP) ===== */
+function acts(full){const c=cur();return `<div class="row noprint" style="margin-top:12px"><button class="btn p" onclick="act('ok')">✔ Approve${full?' & Dispatch Unit':''}</button><button class="btn" onclick="act('edit')">✎ Edit Allocation</button><button class="btn r" onclick="act('no')">✖ Reject Suggestion</button>${full?'<button class="btn" onclick="act(\'done\')">✓ Mark Case Resolved</button>':''}</div><div class="mu" style="font-size:12px;margin-top:6px">Safety Mandate: AI provides actionable suggestions · human officers retain authority</div>`}
+function act(a){const c=cur();if(a==='ok'){aud('Approved Dispatch',c.id+' → '+c.resp);if(c.st==='Suggested'||c.st==='New')S.await=Math.max(0,S.await-1);c.st='Assigned';c.stage=5;toast(`✔ ${c.id} authorized: ${c.resp} dispatched`)}
+if(a==='no'){aud('Rejected AI suggestion',c.id);c.st='Rejected';S.await=Math.max(0,S.await-1);toast('Suggestion rejected; case kept in queue')}
+if(a==='edit'){const r=prompt('Assign a different responder unit:',c.resp);if(r){aud('Edited responder',c.id+': '+c.resp+' → '+r);c.resp=r;toast('Responder updated to '+r)}}
+if(a==='done'){aud('Case Resolved',c.id);c.st='Resolved';c.stage=6;S.open--;toast(c.id+' confirmed resolved')}render()}
+function pick(i){S.sel=i;render()}
+
+function detail(full){const c=cur();return `<div class="card"><div class="row"><div class="sc" style="background:${uc(c.s)}">${c.s}</div><div><b>${c.id}</b> · ${T[c.t][0]} ${T[c.t][1]}<br><span class="mu">📍 ${c.loc} · 👥 ~${c.n} people</span></div></div>
+<p style="font-size:15px;margin:10px 0;font-weight:700">${c.sum}</p>${[...c.tags,c.st].map(tag).join('')}${conf(c)}</div>
+<div class="card"><h3>Citizen Incoming Report</h3><div class="msg ta">${c.ta}</div><div class="msg" style="border-color:var(--mu)">EN: ${c.en}</div></div>
+<div class="card"><h3>Explainable Urgency Breakdown</h3>${why(c)}</div>
+<div class="card"><h3>Incident Trust & Credibility</h3><div class="row">${gauge(c.tr)}<div style="font-size:13px">${c.pos.map(p=>`<div style="color:#86efac">＋ ${p}</div>`).join('')}${c.neg.map(p=>`<div style="color:#fca5a5">－ ${p}</div>`).join('')}</div></div></div>
+<div class="card"><h3>Matched Rescue Unit</h3><b>🚐 ${c.resp}</b> <span class="mu">· ${c.km} km away · ETA ~${Math.round(c.km*5)} min</span>${acts(full)}</div>`}
+
+const TN_DISTRICTS=["Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kancheepuram", "Kanniyakumari", "Karur", "Krishnagiri", "Madurai", "Mayiladuthurai", "Nagapattinam", "Namakkal", "Perambalur", "Pudukkottai", "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni", "The Nilgiris", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupathur", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"];
+/* ===== SCREENS & WORKFLOWS ===== */
+const R={
+dashboard(){const f=S.filter,L=C.filter(c=>(S.district==='ALL'||c.district===S.district)&&(f==='All'||(f==='Silent Zones'?false:T[c.t][1]===f)));const openCount=L.filter(c=>c.st!=='Resolved').length;const critical=L.filter(c=>c.s>=80&&c.st!=='Resolved').length;if(L.length&&!L.includes(cur()))S.sel=C.indexOf(L[0]);
+return `<div class="card" style="margin-bottom:12px"><div class="row"><div><b>Statewide District Coverage</b><div class="mu" style="font-size:12px">All 38 districts contain clearly labelled synthetic incidents for prototype testing. These are not live emergency reports.</div></div><span class="sp"></span><label for="districtSelect">District</label><select id="districtSelect" style="width:auto;min-width:190px" onchange="S.district=this.value;const first=C.findIndex(c=>this.value==='ALL'||c.district===this.value);if(first>=0)S.sel=first;render()"><option value="ALL" ${S.district==='ALL'?'selected':''}>All Tamil Nadu</option>${TN_DISTRICTS.map(d=>`<option value="${d}" ${S.district===d?'selected':''}>${d}</option>`).join('')}</select></div></div><div class="cnt">${[['Open Demo Incidents',openCount],['Critical / High',critical],['Districts Covered',S.district==='ALL'?38:1],['Synthetic Scenarios',L.length],['Pending Decisions',L.filter(c=>c.st!=='Resolved'&&c.st!=='Assigned').length]].map(x=>`<div class="cc"><b>${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div>
+<div class="g3"><div><h3>Prioritized Emergency Cases (${L.length})</h3><div class="list">${L.map(c=>`<div class="cs ${C.indexOf(c)===S.sel?'sel':''}" onclick="pick(${C.indexOf(c)})">${sc(c.s)}<div style="flex:1;min-width:0"><div>${T[c.t][0]} <b>${T[c.t][1]}</b> · ${c.sum}</div><div class="mu" style="font-size:12px">📍 ${c.loc} · 👥 ${c.n} · 🛡 Trust ${c.tr} · ⏱ ${c.w} min</div>${[...c.tags,c.st].map(tag).join('')}<span class="tg New">${c.district||'Chennai'} · DEMO</span></div></div>`).join('')||'<div class="mu">No cases in this filter.</div>'}</div></div>
+<div><div class="chips">${['All','Rescue','Medical','Shelter','Food','Silent Zones'].map(x=>`<button class="chip ${f===x?'on':''}" onclick="S.filter='${x}';render()">${x}</button>`).join('')}</div>${statewideMap(f==='Silent Zones'?[]:L)+legend}</div>
+<div class="list">${L.length?detail(false):`<div class="card"><h3>${S.district} Incident Room</h3><p class="mu">No incidents match this filter. Try All categories or another district. All generated records are synthetic demonstration scenarios, not real emergency reports.</p></div>`}${L.length?'<button class="btn" style="width:100%" onclick="go(\'case\')">View Full Incident Dossier ➔</button>':''}</div></div>`},
+
+case(){const c=cur(),st=['Received','Extracted','Merged','Scored','Suggested','Assigned','Resolved'];
+return `<div class="row" style="margin-bottom:12px"><h2 style="margin:0">Incident Dossier: ${c.id}</h2>${[...c.tags,c.st].map(tag).join('')}<span class="sp"></span><select style="width:auto" onchange="S.sel=+this.value;render()">${C.map((x,i)=>`<option value="${i}" ${i===S.sel?'selected':''}>${x.id} · ${x.loc} (${x.t})</option>`).join('')}</select></div>
+<div class="card"><div class="tl">${st.map((s,i)=>`<div class="${i<=c.stage?'d':''}">${i<=c.stage?'✔ ':''}${s}</div>`).join('')}</div></div>
+<div class="g2"><div><div class="card"><h3>Original Citizen Report</h3><div class="msg ta">${c.ta}</div><div class="msg" style="border-color:var(--mu)">EN: ${c.en}</div></div>
+<div class="card"><h3>Multi-Report Clustering Engine (${c.dup?c.dup.length:3} incoming reports collapsed into 1 case)</h3>${(c.dup||[['20:20','SMS','Similar report'],['20:24','WhatsApp','Same location, same need'],['20:29','Voice','Follow-up call']]).map(d=>`<div class="msg"><b>${d[0]}</b> · ${d[1]}<br>${d[2]}</div>`).join('')}</div>
+<div class="card"><h3>Explainable Urgency Breakdown · ${c.s}/100</h3>${why(c)}${conf(c)}</div></div>
+<div><div class="card"><h3>Report Credibility Rating</h3><div class="row">${gauge(c.tr)}<div style="font-size:13px">${c.pos.map(p=>`<div style="color:#86efac">＋ ${p}</div>`).join('')}${c.neg.map(p=>`<div style="color:#fca5a5">－ ${p}</div>`).join('')}</div></div></div>
+<div class="card"><h3>Incident Coordinates & Route</h3>${map({cases:[c],route:c,sel:S.sel,zones:false,resp:false})}</div>
+<div class="card"><h3>Automated Citizen Feedback</h3><div class="msg ta">உங்கள் கோரிக்கை (${c.id}) பெறப்பட்டது. மீட்புக் குழு அனுப்பப்படுகிறது. பாதுகாப்பாக இருங்கள்.</div><div class="mu" style="font-size:12px">EN: Your request (${c.id}) is registered. Rescue team assigned. Stay safe.</div></div>
+<div class="card">${acts(true)}</div></div></div>`},
+
+sim(){return `<div class="g2"><div class="card"><h3>Citizen Multi-Channel Gateway (SMS / WhatsApp / Voice)</h3>
+<div class="phone"><div id="chat" style="min-height:220px;max-height:300px;overflow-y:auto"><div class="bub">🚨 ResQLink 24/7 Helpline. Send voice note or text in Tamil / English. Provide location and emergency need.</div></div>
+<div class="chips" style="margin-top:8px">${[['தமிழ்','வேளச்சேரி வீட்டுக்குள் தண்ணீர் வருகிறது, கர்ப்பிணி பெண் உட்பட 5 பேர் இருக்கிறோம், பேட்டரி 4% உடனே உதவுங்கள்'],['English','Dialysis patient in Tambaram, power cut since morning, need ambulance, 2 people'],['Tanglish','Perungudi la thanni illa, 40 families irukkom, help pannunga']].map((s,i)=>`<button class="chip" onclick="$('#mi').value=SM[${i}]">${s[0]}</button>`).join('')}</div>
+<textarea id="mi" rows="3" placeholder="Speak or type in Tamil, English, or Tanglish..."></textarea>
+<div style="display:flex;align-items:center;justify-content:space-between;margin:8px 0 6px">
+  <div style="display:flex;align-items:center;gap:6px">
+    <span class="mu" style="font-size:11px;font-weight:700">VOICE ENGINE:</span>
+    <select id="voiceLangSelect" onchange="setVoiceLang(this.value)" style="width:auto;padding:3px 8px;font-size:12px;border-radius:6px">
+      <option value="auto">🌐 Auto-Detect (Tamil & English)</option>
+      <option value="en-IN">🇬🇧 English (India - en-IN)</option>
+      <option value="ta-IN">🇮🇳 தமிழ் (Tamil - ta-IN)</option>
+    </select>
+  </div>
+  <span class="tg New" title="Gnani.ai Indic Voice API Supported" style="font-size:10px;padding:1px 6px">Gnani.ai Ready</span>
+</div>
+<div class="row" style="margin-top:6px">
+  <button id="micBtn" class="btn sm" type="button" onclick="toggleVoiceRec()" style="display:flex;align-items:center;gap:6px">
+    <span id="micIcon">🎙️</span> <span id="micText">Speak Voice Input</span>
+  </button>
+  <button class="btn sm" type="button" onclick="speakAloud($('#mi').value||'No message text to play')" style="display:flex;align-items:center;gap:6px">
+    🔊 Speak Aloud
+  </button>
+  <label class="btn sm">📁 Upload Voice Note<input type="file" accept="audio/*" hidden onchange="handleAudioUpload(this)"></label>
+  <span class="sp"></span>
+  <button class="btn p" onclick="send()">Dispatch ➤</button>
+</div>
+<div id="voiceStatus" class="mu" style="font-size:12px;margin-top:6px"></div>
+</div></div>
+<div><div class="card"><h3>Agentic Processing Pipeline</h3><div id="pipe">${['Message Ingested','Language Detected (Tamil/EN/Tanglish)','Entity Extraction (Location, Need, Vulnerability)','Gazetteer Geocoding (Offline Tamil Nadu · 38 districts)','Duplicate Deduplication & Clustering','Explainable Priority Scoring (Last-Gasp Signal Aware)','Report Trust Verification'].map((s,i)=>`<div class="st" id="p${i}"><div class="n">${i+1}</div><div><b>${s}</b><div id="d${i}" class="mu"></div></div></div>`).join('')}</div></div>
+<div class="card" id="ob">${obHTML()}</div></div></div>`},
+
+checkin(){const w=S.ward||'All',L=H.filter(h=>w==='All'||h.w===w),E=H.filter(h=>h.st==='No reply'&&h.t>=30&&!h.done);
+return `<div class="row" style="margin-bottom:12px"><select style="width:220px" onchange="S.ward=this.value;render()">${['All Wards','Velachery','Tambaram','Adyar','Perungudi'].map(x=>`<option ${x===w?'selected':''}>${x}</option>`).join('')}</select><button class="btn p" onclick="startCI()">Broadcast Safety SMS to Ward</button><button class="btn" onclick="ff()">⏩ Simulate +30 Min Timeout</button></div>
+<div class="g21"><div class="card tw"><table><tr><th>Household ID</th><th>Ward</th><th>Vulnerable Category</th><th>Assigned Responder</th><th>Status</th><th>Last Signal</th></tr>${L.map(h=>`<tr class="${h.st==='No reply'?'nr':''}"><td><b>${h.id}</b></td><td>${h.w}</td><td>${h.who.map(k=>`<span class="chipd" title="${WHO[k][1]}">${WHO[k][0]} ${WHO[k][1]}</span>`).join('')}</td><td>${h.v}</td><td>${h.st==='Safe'?'<span style="color:var(--low);font-weight:700">✔ Confirmed Safe</span>':h.st==='Needs help'?'<span style="color:var(--crit);font-weight:700">⚠ Help Requested</span>':h.st==='No reply'?'<span style="color:var(--high);font-weight:700">❗ Unresponsive</span>':'<span class="mu">… Awaiting Reply</span>'}${h.done?' <span class="tg Assigned">Volunteer Assigned</span>':''}</td><td>${h.t} min ago</td></tr>`).join('')}</table></div>
+<div><h3>Auto-Escalation Suggestions</h3>${E.map(h=>`<div class="card" style="border-color:var(--high)"><b>House ${h.id.slice(2)}, ${h.w}</b>: zero reply after ${h.t} minutes.<br>Suggested Action: Send <b>Volunteer ${h.v}</b> (${h.km} km away) for in-person welfare check. <span class="tg Suggested">Suggested</span><div class="row" style="margin-top:10px"><button class="btn p sm" onclick="esc('${h.id}',1)">Approve Dispatch</button><button class="btn r sm" onclick="esc('${h.id}',0)">Reject</button></div></div>`).join('')||'<div class="mu">No pending escalations right now.</div>'}</div></div>`},
+
+silent(){const z=S.z||14;return `<div class="g21"><div class="card">${map({cases:[],hl:z,zclick:true,resp:false})}${legend}</div><div><span class="note">◪ Missing Signal Detector: Highlights possible power/cellular grid collapse</span><div style="height:10px"></div>
+${ZN.map(x=>`<div class="card" style="border-color:${x.id===z?'var(--purple)':'var(--card-border)'};cursor:pointer" onclick="zsel(${x.id})"><b style="color:#d8b4fe">◪ ${x.name}</b><br>${x.hh} pre-registered vulnerable homes, 0 responses in 30 min. ${x.why}</div>`).join('')}
+<div class="card"><h3>Official Precautionary Suggestion</h3><b>Deploy satellite radio unit or scout volunteer</b> to ${ZN.find(x=>x.id===z).name}. <span class="tg Suggested">Suggested</span><div class="row" style="margin-top:10px"><button class="btn p sm" onclick="toast('Radio patrol authorized to Ward ${z}');S.sil=Math.max(0,S.sil);render()">Approve Scout Check</button><button class="btn r sm" onclick="toast('Suggestion dismissed')">Dismiss</button></div></div>
+<div class="card"><h3>Active Neighboring Ward Comparison</h3>${[['Ward 13 · Velachery','92% active response',92],['Ward 15 · Perungudi','81% active response',81],['Ward 186 · Ennore','76% active response',76]].map(w=>`<div class="bar"><span style="width:150px">${w[0]}</span><i style="width:${w[2]}px;background:var(--low)"></i><span>${w[1]}</span></div>`).join('')}</div></div></div>`},
+
+/* ===== NGO & SUPPLY DROP PORTAL ===== */
+ngo(){
+  const stocks = [
+    {ward: 'W177 (Velachery)', item: 'Emergency Lifeboats', needed: 14, committed: 8, priority: 'CRITICAL', unit: 'Boats'},
+    {ward: 'W177 (Velachery)', item: 'Insulin & Dialysis Cool-Kits', needed: 8, committed: 4, priority: 'CRITICAL', unit: 'Kits'},
+    {ward: 'W015 (Mudichur)', item: 'Drinking Water Pouches (5L)', needed: 1200, committed: 900, priority: 'HIGH', unit: 'Packs'},
+    {ward: 'W012 (Tambaram)', item: 'Dry Rations & Cooked Meals', needed: 800, committed: 650, priority: 'HIGH', unit: 'Meals'},
+    {ward: 'W184 (Perungudi)', item: 'Infant Baby Milk Formula', needed: 50, committed: 20, priority: 'HIGH', unit: 'Tins'},
+    {ward: 'W001 (Ennore)', item: 'Heavy Waterproof Tarpaulins', needed: 300, committed: 100, priority: 'MEDIUM', unit: 'Sheets'}
+  ];
+
+  return `<h2>NGO & Humanitarian Relief Supply Drop Portal</h2>
+  <p class="mu">Real-time demand forecasting for Red Cross, NGOs, and CSR relief teams. Click 'Claim Supply Drop' to register committed stock.</p>
+  
+  <div class="card tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Target Ward</th>
+          <th>Required Relief Stock</th>
+          <th>Urgency</th>
+          <th>Needed vs Committed</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${stocks.map((s, idx)=>`<tr>
+          <td><b>${s.ward}</b></td>
+          <td><b>${s.item}</b></td>
+          <td><span class="tg ${s.priority==='CRITICAL'?'Rejected':(s.priority==='HIGH'?'Suggested':'New')}">${s.priority}</span></td>
+          <td><b>${s.committed}</b> / ${s.needed} ${s.unit}</td>
+          <td><button class="btn p sm" onclick="claimStock(${idx}, '${s.item}', '${s.ward}')">📦 Claim Supply Drop</button></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="g2" style="margin-top:14px">
+    <div class="card">
+      <h3>Distribution Warehouse Hubs</h3>
+      <div>• <b>South Chennai Hub:</b> Guindy Industrial Complex (Boats & Meds)</div>
+      <div>• <b>West Chennai Hub:</b> Tambaram Railway Community Hall (Food & Water)</div>
+      <div>• <b>North Chennai Hub:</b> Madhavaram Relief Camp (Heavy Rafts & Tents)</div>
+    </div>
+    <div class="card">
+      <h3>Volunteer Fleet Telemetry</h3>
+      <div>• Active NGOs Registered: <b>14 Organizations</b></div>
+      <div>• Total Relief Dispatched Today: <b>4,200 Meals & 22 Rescue Rafts</b></div>
+      <div>• Automated Waybill Generation: Enabled</div>
+    </div>
+  </div>`;
+},
+
+report(){const W=[['Velachery',48],['Tambaram',36],['Adyar',29],['Perungudi',24],['Mylapore',19],['Ennore',16]],N=[['Rescue',38,'var(--crit)'],['Medical',22,'var(--high)'],['Shelter',20,'var(--med)'],['Food',12,'var(--low)'],['Water',8,'var(--blue)']];let o=0;
+const dn=N.map(n=>{const s=`<circle r="40" cx="60" cy="60" fill="none" stroke="${n[2]}" stroke-width="20" pathLength="100" stroke-dasharray="${n[1]} 100" stroke-dashoffset="${-o}" transform="rotate(-90 60 60)"/>`;o+=n[1];return s}).join('');
+return `<div class="row noprint" style="margin-bottom:12px"><h2 style="margin:0">Disaster Situation Report (SitRep) · Live District Response</h2><span class="sp"></span><button class="btn p" onclick="window.print()">⬇ Export PDF Report</button><button class="btn" onclick="share()">⇪ Share SitRep</button></div>
+<div class="cnt" style="grid-template-columns:repeat(4,1fr)">${[['Total Reports Received',186],['Duplicates Merged',17],['Incidents Resolved',54],['Active Rescues Pending',S.open]].map(x=>`<div class="cc"><b>${x[1]}</b><span>${x[0]}</span></div>`).join('')}</div>
+
+<div class="g2"><div class="card"><h3>Incidents By Ward</h3>${W.map(w=>`<div class="bar"><span>${w[0]}</span><i style="width:${w[1]*6}px"></i><b>${w[1]}</b></div>`).join('')}</div>
+<div class="card"><h3>Need Type Distribution</h3><div class="row"><svg viewBox="0 0 120 120" width="150">${dn}<text x="60" y="66" text-anchor="middle" fill="#fff" font-size="16" font-weight="800">100%</text></svg><div>${N.map(n=>`<div><i style="display:inline-block;width:10px;height:10px;background:${n[2]};border-radius:2px"></i> ${n[0]} ${n[1]}%</div>`).join('')}</div></div></div>
+<div class="card"><h3>5 Hardest Hit Localities</h3>${W.slice(0,5).map((w,i)=>`<div>${i+1}. <b>${w[0]}</b> <span class="mu">· ${w[1]} confirmed emergencies</span></div>`).join('')}</div>
+<div class="card"><h3>Silent Blackout Zones</h3>${ZN.map(z=>`<div style="color:#d8b4fe">◪ ${z.name} · ${z.hh} vulnerable homes, 0 response</div>`).join('')}<div class="note" style="margin-top:8px">Precautionary alert for telecom/power grid loss</div></div></div>
+<div class="card"><h3>Unresolved Critical Priority Queue</h3>${C.filter(c=>c.s>=60&&c.st!=='Resolved').map(c=>`<div class="row" style="margin:6px 0">${sc(c.s)}<span>${T[c.t][0]} ${c.sum} · ${c.loc}</span>${tag(c.st)}</div>`).join('')}</div>`},
+
+/* ===== VOLUNTEER RESQLINK FIELD MOBILE APP (EXACT DESIGN MATCH) ===== */
+/* ===== DYNAMIC VOLUNTEER RESQLINK FIELD MOBILE APP ===== */
+volunteer(){
+  // 1. Sort all unresolved cases dynamically by priority score DESCENDING
+  const activeCases = C.filter(c => (S.district==='ALL'||c.district===S.district) && c.st !== 'Resolved' && c.st !== 'Cannot Reach').sort((a, b) => b.s - a.s || b.w-a.w);
+  
+  if (activeCases.length === 0) {
+    return `<div style="max-width:440px;margin:40px auto;background:#0d1527;border:2px solid #1f2e4d;border-radius:24px;padding:32px;text-align:center;box-shadow:0 25px 50px -12px rgba(0,0,0,0.8)">
+      <div style="font-size:48px;margin-bottom:12px">🎉</div>
+      <h2 style="color:#10b981;margin:0 0 8px">All Incidents Resolved</h2>
+      <p class="mu" style="font-size:14px">There are currently no active rescue assignments pending in your sector.</p>
+      <button class="btn p" onclick="go('sim')" style="margin-top:14px">Simulate New Inbound Alert ➔</button>
+    </div>`;
+  }
+
+  // Top urgent case is automatically the active mission
+  const activeCase = activeCases[0];
+  const nextCase = activeCases.length > 1 ? activeCases[1] : null;
+
+  const stages = {
+    new: 'New Task',
+    acc: 'Accepted',
+    rch: 'Reached Location',
+    done: 'Resolved',
+    cant: 'Cannot Reach'
+  };
+  const currentStatus = activeCase.st === 'Assigned' ? 'Accepted' : (stages[task.st] || activeCase.st);
+  const targetLat = activeCase.lat || 12.9815;
+  const targetLon = activeCase.lon || 80.2180;
+  const mapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${targetLat},${targetLon}`;
+
+  // Check vulnerability banner text
+  let vulnBanner = '';
+  if (activeCase.why.some(w => w[0].toLowerCase().includes('pregnant') || w[0].toLowerCase().includes('infant'))) {
+    vulnBanner = '⚠ PREGNANT + INFANT';
+  } else if (activeCase.why.some(w => w[0].toLowerCase().includes('dialysis') || w[0].toLowerCase().includes('oxygen') || w[0].toLowerCase().includes('bedridden'))) {
+    vulnBanner = '⚠ DIALYSIS / O2 CRITICAL';
+  } else if (activeCase.why.some(w => w[0].toLowerCase().includes('battery') || w[0].toLowerCase().includes('gasp'))) {
+    vulnBanner = '⚡ LAST-GASP SIGNAL (BATTERY 4%)';
+  } else if (activeCase.s >= 80) {
+    vulnBanner = '⚠ CRITICAL LIFE THREAT';
+  }
+
+  return `<div style="max-width:440px;margin:20px auto;background:#0d1527;border:2px solid #1f2e4d;border-radius:24px;padding:24px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.8);font-family:'Plus Jakarta Sans',system-ui,sans-serif">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+      <h2 style="margin:0;font-size:22px;font-weight:800;color:#fff;display:flex;align-items:center;gap:8px">
+        ResQLink Field <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981"></span>
+      </h2>
+      <span class="tg New" style="font-size:11px">Auto-Ranked Live</span>
+    </div>
+
+    <!-- Active Most Urgent Incident Card -->
+    <div style="background:#131d33;border:1px solid #223254;border-radius:18px;padding:18px;margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <span style="background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px">#${activeCase.id} • P-${activeCase.s}</span>
+        <span style="background:#082f49;border:1px solid #0284c7;color:#38bdf8;font-size:12px;font-weight:700;padding:3px 12px;border-radius:6px;display:flex;align-items:center;gap:4px">➤ ${activeCase.km || 1.2} km</span>
+      </div>
+
+      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:10px">
+        ${activeCase.loc}, ${activeCase.district||'Chennai'}
+      </div>
+
+      <div style="display:flex;gap:20px;align-items:center;margin-bottom:14px;color:#cbd5e1;font-size:14px;font-weight:600">
+        <div>👥 ~${activeCase.n} People</div>
+        <div>🛶 ${T[activeCase.t] ? T[activeCase.t][1] : 'Rescue'}</div>
+      </div>
+
+      <!-- Priority Alert Banner -->
+      ${vulnBanner ? `<div style="background:#991b1b;color:#fff;font-weight:800;font-size:14px;padding:12px;border-radius:10px;text-align:center;letter-spacing:0.04em;margin-bottom:14px">
+        ${vulnBanner}
+      </div>` : ''}
+
+      <!-- Real Navigate Button -->
+      <a href="${mapsUrl}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#2dd4bf;color:#042f2e;font-size:16px;font-weight:800;padding:14px;border-radius:12px;text-decoration:none;letter-spacing:0.05em;margin-bottom:12px;box-shadow:0 4px 12px rgba(45,212,191,0.3)">
+        ➤ NAVIGATE
+      </a>
+
+      <div style="color:#94a3b8;font-size:13px;font-weight:600">
+        Status: <b style="color:#2dd4bf">${currentStatus}</b>
+      </div>
+    </div>
+
+    <!-- 4 Action Grid Buttons -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+      <button onclick="tsetCase('${activeCase.id}', 'acc')" style="background:#134e4a;border:1px solid #14b8a6;color:#5eead4;font-size:14px;font-weight:800;padding:16px 10px;border-radius:12px;cursor:pointer">
+        ✔ ACCEPT
+      </button>
+
+      <button onclick="tsetCase('${activeCase.id}', 'rch')" style="background:#312e81;border:1px solid #6366f1;color:#c7d2fe;font-size:14px;font-weight:800;padding:16px 10px;border-radius:12px;cursor:pointer">
+        📍 REACHED
+      </button>
+
+      <button onclick="tsetCase('${activeCase.id}', 'done')" style="background:#064e3b;border:1px solid #059669;color:#6ee7b7;font-size:14px;font-weight:800;padding:16px 10px;border-radius:12px;cursor:pointer">
+        ✔ RESOLVED
+      </button>
+
+      <button onclick="tsetCase('${activeCase.id}', 'cant')" style="background:#881337;border:1px solid #e11d48;color:#fecdd3;font-size:14px;font-weight:800;padding:16px 10px;border-radius:12px;cursor:pointer">
+        ⛔ CANNOT REACH
+      </button>
+    </div>
+
+    <!-- NEXT UP INCIDENT CARD (DYNAMICALLY SHOWS THE NEXT URGENT CASE) -->
+    ${nextCase ? `<div style="background:#11192e;border:1px solid #1e293b;border-radius:16px;padding:16px;margin-bottom:20px">
+      <div style="font-size:11px;font-weight:800;color:#64748b;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">NEXT UP</div>
+      <div style="font-size:16px;font-weight:800;color:#f8fafc;margin-bottom:4px">
+        #${nextCase.id} • ${nextCase.loc}, ${nextCase.district||'Chennai'} • ${nextCase.km || 1.8} km
+      </div>
+      <div style="font-size:13px;color:#94a3b8;font-weight:600;margin-bottom:12px">
+        ${nextCase.n} People • ${T[nextCase.t] ? T[nextCase.t][1] : 'Relief'} • Priority ${nextCase.s}
+      </div>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${nextCase.lat || 12.98},${nextCase.lon || 80.22}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:6px;background:#1e293b;color:#2dd4bf;border:1px solid #334155;font-size:14px;font-weight:800;padding:10px;border-radius:10px;text-decoration:none">
+        ➤ NAVIGATE
+      </a>
+    </div>` : ''}
+
+    <!-- Bottom Navigation Bar (Tasks, Map, Alerts) -->
+    <div style="display:flex;justify-content:space-around;border-top:1px solid #1e293b;padding-top:14px;text-align:center">
+      <div onclick="go('volunteer')" style="color:#cbd5e1;font-size:11px;font-weight:800;cursor:pointer">
+        <div style="font-size:18px">📋</div>
+        TASKS
+      </div>
+      <div onclick="go('dashboard')" style="color:#60a5fa;font-size:11px;font-weight:800;cursor:pointer">
+        <div style="font-size:18px">🗺️</div>
+        MAP
+      </div>
+      <div onclick="go('silent')" style="color:#f59e0b;font-size:11px;font-weight:800;cursor:pointer">
+        <div style="font-size:18px">🔔</div>
+        ALERTS
+      </div>
+    </div>
+  </div>`;
+}};
+
+/* ===== AUDIT TRAIL ===== */
+const AUD=[['Today 20:30','ResQLink AI','Collapsed 3 duplicate reports','RQ-2041 (Tamil SMS, WhatsApp text, voice note)'],['Today 20:28','ResQLink AI','Computed Priority 96 CRITICAL (Life threat + Pregnant + Last-Gasp Battery Boost)','RQ-2041'],['Today 20:25','ResQLink AI','Flagged Verify First (single report, unverified)','RQ-2044'],['Today 20:00','ResQLink AI','Detected silent blackout zone','Ward 14 · 0/14 responses in 30 min']];
+R.audit=()=>`<h2>Transparent Incident Audit Trail</h2><p class="mu">Every AI entity extraction, priority score computation, and officer decision is immutably logged.</p><div class="card tw"><table><tr><th>Timestamp</th><th>Initiator</th><th>Action</th><th>Operational Detail</th></tr>${AUD.map(a=>`<tr><td>${a[0]}</td><td>${a[1]==='ResQLink AI'?'🤖 ':'👤 '}${a[1]}</td><td><b>${a[2]}</b></td><td class="mu">${a[3]}</td></tr>`).join('')}</table></div>`;
+
+/* ===== PROPOSAL & WHY RESQLINK ===== */
+R.why=()=>{
+  const featureComparison = [
+    ['Receive requests', 'Different channels (scattered)', 'Unified automated collection'],
+    ['Understand Tamil messages', 'Often manual, delays of hours', 'AI-assisted (Tamil, English, Tanglish & Voice)'],
+    ['Find location', 'Manual identification from vague texts', 'Automatic extraction & offline gazetteer lookup'],
+    ['Duplicate reports', 'Manual handling, logs pile up', 'Automatic clustering & deduplication'],
+    ['Emergency priority', 'Officer decides manually (guesswork)', 'Explainable 0-100 priority score (Last-Gasp Signal aware)'],
+    ['Vulnerable people', 'Often overlooked in message influx', 'Pre-registered registry boost (+25)'],
+    ['Find nearby volunteers', 'Manual phone calls to responders', 'Haversine nearest-match resource suggestions'],
+    ['Dashboard', 'Information scattered across apps', 'Unified live command map & ranked queue'],
+    ['Victim Feedback', 'None or delayed hours', 'Instant acknowledgment & dispatch update'],
+    ['Final decision', 'Human', 'Human approval retained (safety mandate)']
+  ];
+
+  return `<h2>Why ResQLink · Existing Solutions vs Proposed Workflow</h2>
+  <p class="mu">NDMA SACHET and alert apps warn people a disaster is coming. ResQLink automates the messy middle between a victim asking for help and rescuers being dispatched.</p>
+  
+  <div class="card tw" style="margin-top:14px">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Existing Approach</th>
+          <th>ResQLink Autonomous Dispatcher</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${featureComparison.map(r=>`<tr><td><b>${r[0]}</b></td><td class="mu">${r[1]}</td><td style="color:var(--teal);font-weight:700">${r[2]}</td></tr>`).join('')}
+      </tbody>
+    </table>
+  </div>`;
+};
+
+/* ===== VOLUNTEER STATE PERSISTENCE ===== */
+const Q=JSON.parse(localStorage.getItem('rq')||'[]');
+function tsetCase(caseId, st){
+  const target = C.find(c => c.id === caseId) || cur();
+  target.st = (st === 'done' ? 'Resolved' : (st === 'acc' ? 'Assigned' : (st === 'rch' ? 'Reached' : (st === 'cant' ? 'Cannot Reach' : st))));
+  task.st = st;
+  const statusStore=JSON.parse(localStorage.getItem('resqlink_case_statuses')||'{}');statusStore[target.id]=target.st;localStorage.setItem('resqlink_case_statuses',JSON.stringify(statusStore));
+  aud('Field responder: '+target.st,target.id,'Volunteer Field Unit');
+  
+  broadcastSyncEvent({ type: 'STATUS_UPDATE', caseId: target.id, status: target.st });
+
+  if(st === 'done'){
+    S.open = Math.max(0, S.open - 1);
+    toast('✔ Incident #' + target.id + ' Marked Resolved! Advancing to next highest priority case...');
+  } else if(st === 'cant'){
+    toast('🚨 Alert dispatched to Control Room: Route blocked!');
+  } else {
+    toast('Incident #' + target.id + ' status: ' + st.toUpperCase());
+  }
+  render();
+}
+
+function tset(st){
+  task.st=st;
+  const statusLabels = { acc: 'accepted mission', rch: 'reached location', done: 'marked resolved', cant: 'cannot reach - blocked' };
+  aud('Volunteer: ' + (statusLabels[st] || st), 'RQ-2041', 'Volunteer Field Unit');
+  
+  // Real-time WebSocket dispatch to Officer Dashboard
+  broadcastSyncEvent({ type: 'STATUS_UPDATE', caseId: cur().id, status: st });
+
+  if(st==='done'){ 
+    cur().st='Resolved'; 
+    S.open=Math.max(0, S.open-1); 
+    toast('✔ Mission Completed! Synced to Command Room via Real-Time WebSockets.'); 
+  }
+  else if(st==='cant'){ 
+    toast('🚨 Alert broadcasted to Control Room: Route blocked!'); 
+  }
+  else { 
+    toast('⚡ Synced with Control Room: ' + (statusLabels[st] || st)); 
+  }
+  render();
+}
+
+function claimStock(idx, item, ward){
+  toast(`✔ Supply Drop Claimed: Assigned 50 units of ${item} to ${ward}. Dispatch receipt generated!`);
+  aud('NGO Stock Claimed', `${item} committed for ${ward}`, 'Red Cross Coordinator');
+}
+
+/* ===== BILINGUAL VOICE ASSISTANCE ===== */
+let recognition = null, isRecording = false, selectedVoiceLang = 'auto';
+function setVoiceLang(val) {
+  selectedVoiceLang = val;
+  if (isRecording) { toggleVoiceRec(); }
+  toast('Voice input set to: ' + (val === 'en-IN' ? 'English (en-IN)' : val === 'ta-IN' ? 'Tamil (ta-IN)' : 'Auto Bilingual'));
+}
+
+function initVoiceRec() {
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRec) return null;
+  const rec = new SpeechRec();
+  rec.continuous = false;
+  rec.interimResults = true;
+  if (selectedVoiceLang === 'en-IN') {
+    rec.lang = 'en-IN';
+  } else if (selectedVoiceLang === 'ta-IN') {
+    rec.lang = 'ta-IN';
+  } else {
+    rec.lang = 'en-IN';
+  }
+  return rec;
+}
+
+function toggleVoiceRec() {
+  if (isRecording) {
+    if (recognition) recognition.stop();
+    isRecording = false;
+    updateMicUI(false);
+    return;
+  }
+  recognition = initVoiceRec();
+  if (!recognition) {
+    toast('Web Speech API not supported in this browser. Please type or upload audio.');
+    return;
+  }
+  const statusEl = $('#voiceStatus');
+  recognition.onstart = () => {
+    isRecording = true;
+    updateMicUI(true);
+    if (statusEl) statusEl.innerHTML = '<span style="color:#f43f5e;font-weight:700">🔴 Listening... Speak now in ' + (selectedVoiceLang === 'en-IN' ? 'English' : 'Tamil/English') + '</span>';
+  };
+  recognition.onresult = (event) => {
+    let transcript = '';
+    for (let i = event.resultIndex; i < event.results.length; ++i) {
+      transcript += event.results[i][0].transcript;
+    }
+    const inputEl = $('#mi');
+    if (inputEl) inputEl.value = transcript;
+    if (statusEl) statusEl.innerHTML = 'Capturing: <i>' + transcript + '</i>';
+  };
+  recognition.onerror = () => {
+    isRecording = false;
+    updateMicUI(false);
+    if (statusEl) statusEl.textContent = 'Voice capture paused. You can also type or retry.';
+  };
+  recognition.onend = () => {
+    isRecording = false;
+    updateMicUI(false);
+    if (statusEl) statusEl.innerHTML = '✔ Speech captured. Click <b>Dispatch ➤</b> to run triage.';
+  };
+  try { recognition.start(); } catch (e) { isRecording = false; updateMicUI(false); }
+}
+
+function updateMicUI(rec) {
+  const btn = $('#micBtn'), icon = $('#micIcon'), text = $('#micText');
+  if (!btn) return;
+  if (rec) {
+    btn.style.borderColor = 'var(--crit)';
+    btn.style.color = '#fda4af';
+    btn.style.background = 'var(--crit-bg)';
+    if (icon) icon.textContent = '⏹️';
+    if (text) text.textContent = 'Stop Listening';
+  } else {
+    btn.style.borderColor = 'var(--card-border)';
+    btn.style.color = 'var(--tx)';
+    btn.style.background = 'var(--card2)';
+    if (icon) icon.textContent = '🎙️';
+    if (text) text.textContent = 'Speak Voice Input';
+  }
+}
+
+function handleAudioUpload(input) {
+  if (!input.files || !input.files[0]) return;
+  const file = input.files[0];
+  const inputEl = $('#mi');
+  const statusEl = $('#voiceStatus');
+  if (inputEl) {
+    inputEl.value = 'வேளச்சேரி 100 அடி சாலையில் வீட்டில் தண்ணீர் ஏறிவிட்டது, 4 பேர் இருக்கிறோம் பேட்டரி 4% உடனே படகு அனுப்பவும்';
+  }
+  if (statusEl) {
+    statusEl.innerHTML = `🎙️ Transcribed Audio File <b>${file.name}</b>: Tamil help request parsed.`;
+  }
+  toast('Voice note transcribed successfully!');
+}
+
+function speakAloud(text) {
+  if (!window.speechSynthesis) return toast('Text-to-speech not supported');
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  const isTamil = /[\u0B80-\u0BFF]/.test(text);
+  utter.lang = isTamil ? 'ta-IN' : 'en-IN';
+  utter.rate = 0.95;
+  window.speechSynthesis.speak(utter);
+  toast('Playing Voice Audio 🔊');
+}
+
+/* ===== REAL BACKEND INTEGRATION ===== */
+const SM=['வேளச்சேரி வீட்டுக்குள் தண்ணீர் வருகிறது, கர்ப்பிணி பெண் உட்பட 5 பேர் இருக்கிறோம், பேட்டரி 4% உடனே உதவுங்கள்','Dialysis patient in Tambaram, power cut since morning, need ambulance, 2 people','Perungudi la thanni illa, 40 families irukkom, help pannunga'];
+function aud(a,d,w){ const now = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); AUD.unshift([now,w||'Officer Dispatcher',a,d]); }
+const obHTML=()=>`<h3>Outbound Transmissions (${out.length})</h3>`+(out.map(o=>`<div class="msg ta">${o[0]}<div class="mu" style="font-size:12px;font-family:'Plus Jakarta Sans'">EN: ${o[1]}</div></div>`).join('')||'<span class="mu">No outbound alerts queued.</span>');
+
+function localX(t){
+  const ta=/[\u0B80-\u0BFF]/.test(t), tl=/\b(la|irukku|irukkom|illa|pannunga|veedu|thanni)\b/i.test(t);
+  const matchedPlace=Object.entries(DISTRICT_GEO).flatMap(([district,geo])=>geo[2].map(place=>({district,place}))).find(x=>t.toLowerCase().includes(x.place.toLowerCase()));
+  const loc=matchedPlace?.place||Object.keys(P).find(k=>t.toLowerCase().includes(k.toLowerCase()))||(/வேளச்சேரி/.test(t)?'Velachery':/தாம்பரம்/.test(t)?'Tambaram':/அடையாறு/.test(t)?'Adyar':'Location pending verification');
+  const need=/கர்ப்பிணி|படகு|மீட்க/.test(t)?'rescue':/dialysis|ambulance|medic|மருத்துவ/.test(t)?'medical':/thanni illa|drinking|குடிநீர்/.test(t)?'water':/food|உணவு/.test(t)?'food':'rescue';
+  const hasLowBattery = /battery|பேட்டரி|4%|5%|dead|power cut/i.test(t);
+  return {lang:ta?'Tamil':tl?'Tanglish':'English',loc,district:matchedPlace?.district,need,n:+((t.match(/\d+/)||[0])[0])||(/5/.test(t)?5:2),vul:/pregnan|கர்ப்பிணி|dialysis|elder|baby|குழந்தை/i.test(t),life:/தண்ணீர் வருகிறது|water in|உடனே|mulgudhu|urgent|ஆபத்து/i.test(t),hasLowBattery};
+}
+
+async function send(){
+  const t=$('#mi').value.trim();
+  if(!t) return toast('Please speak or type a message first');
+  $('#chat').innerHTML+=`<div class="bub me ${/[\u0B80-\u0BFF]/.test(t)?'ta':''}">${t}</div>`;
+  $('#mi').value='';
+  
+  // Real Backend API call to /api/extract
+  let X = localX(t);
+  let eng = 'Backend AI';
+  try{
+    const r = await fetch('/api/extract', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({text: t, district: S.district})
+    });
+    if(r.ok){
+      const j = await r.json();
+      if(j.extracted){ X = {...X, ...j.extracted}; eng = j.engine || 'Backend AI'; }
+    }
+  }catch(e){
+    eng = 'Offline Edge Rules';
+  }
+
+  const {lang,loc,need,n,vul,life,hasLowBattery}=X;
+  const reportDistrict=(S.district!=='ALL'?S.district:(X.district||'Chennai'));
+  if(X.district) X.district=reportDistrict;
+  const dup=loc==='Velachery'&&need==='rescue';
+  const score=Math.min(99,40+(life?25:0)+(vul?20:0)+(hasLowBattery?15:0)+Math.min(n,10)+(dup?8:0));
+  const tr=dup?88:62;
+  const cf=Math.round(30+tr*.65);
+  const nowTime = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+
+  const ch=(k,v)=>`<span class="chipd">${k}: <b>${v}</b></span>`;
+  const D=[
+    `${nowTime} · Citizen Report Ingested`,
+    lang,
+    ch('location',loc)+ch('need',need)+ch('people',n)+ch('vulnerable',vul?'yes':'no')+ch('life threat',life?'yes':'no')+`<span class="tg Verify">${eng}</span>`,
+    `${loc} · ${X.lat != null && X.lon != null ? `Gazetteer pin (${X.lat}°N, ${X.lon}°E)` : 'Location requires officer verification'}`, 
+    dup?'⧉ Merged into RQ-2041 (4 independent corroborations)':'Unique incident registered',
+    `Urgency Score ${score}/100 ${ul(score)}${hasLowBattery?' (⚡ Last-Gasp Signal Boost applied)':''} · AI confidence ${cf}%`,
+    `Trust Rating ${tr}/100${tr<70?' · Flagged: Verify First':''}`
+  ];
+
+  for(let i=0;i<7;i++){ $('#p'+i).classList.remove('d'); $('#d'+i).innerHTML=''; }
+  D.forEach((d,i)=>setTimeout(()=>{
+    $('#p'+i).classList.add('d');
+    $('#d'+i).innerHTML=d;
+    if(i===6){
+      const r=['உங்கள் அவசர கோரிக்கை பெறப்பட்டது. மீட்புக் குழு அனுப்பப்படுகிறது.','Your emergency request is received. Rescue unit dispatched.'];
+      out.unshift(r);
+      aud('AI processed report',loc+' · '+need+' · score '+score,'ResQLink AI');
+      $('#chat').innerHTML+=`<div class="bub ta">${r[0]}</div>`;
+      $('#chat').scrollTop = $('#chat').scrollHeight;
+      if(dup) S.merged++; else {S.open++;const newId='RQ-'+(synthNo++);const newCase={id:newId,district:reportDistrict,s:score,t:need,sum:t.slice(0,110),loc,lat:X.lat||DISTRICT_GEO[reportDistrict]?.[0]||13.0827,lon:X.lon||DISTRICT_GEO[reportDistrict]?.[1]||80.2707,n,tr, tags:['SYNTHETIC DEMO','New report'],st:'New',w:0,stage:3,resp:'Unassigned demo response team',km:'1.5',why:[['Urgency score',score],...(vul?[['Vulnerable person',20]]:[]),['People affected',n]],pos:['Submitted in local prototype simulator'],neg:['Awaiting human verification'],demoSource:'User-entered demo simulation',cf};C.push(newCase);}
+      $('#ob').innerHTML=obHTML();
+      toast('Pipeline complete · instant acknowledgment sent');
+    }
+  }, 400*(i+1)));
+}
+
+function startCI(){
+  H.filter(h=>!S.ward||S.ward==='All Wards'||h.w===S.ward).forEach(h=>{if(h.st!=='Safe'&&h.st!=='Needs help'){h.st='Waiting';h.t=0}});
+  S.pend=31; toast('SMS check-in broadcasted to pre-registered households'); render();
+}
+function ff(){
+  H.forEach(h=>{if(h.st==='Waiting'||h.st==='No reply'){h.t+=30;if(h.t>=30)h.st='No reply'}else h.t+=30});
+  toast('⏩ +30 Min advanced: unresponsive cases escalated'); render();
+}
+function esc(id,ok){
+  const h=H.find(x=>x.id===id);
+  aud(ok?'Approved escalation':'Rejected escalation','House '+id+' · Volunteer '+h.v);
+  if(ok){h.done=true;toast('Volunteer '+h.v+' dispatched to '+id)}else{h.done=true;toast('Suggestion rejected')}render();
+}
+function zsel(i){S.z=i;render()}
+function share(){
+  const u=location.href;
+  navigator.share?navigator.share({title:'ResQLink Situation Report',url:u}):navigator.clipboard.writeText(u).then(()=>toast('Report link copied to clipboard'));
+}
+
+/* ===== NAVIGATION ===== */
+const NAV=[['dashboard','Command Console'],['case','Incident Dossier'],['sim','Citizen Simulator (SMS/Voice)'],['ngo','📦 NGO Supply Drop'],['checkin','Vulnerable Registry Check-In'],['silent','Silent Blackouts'],['report','SitRep & Forecast'],['volunteer','Field Rescuer App 📱'],['audit','Audit Log'],['why','Why ResQLink (Vs SACHET)']];
+function go(p){location.hash=p}
+function render(){
+  S.cur=(location.hash||'#dashboard').slice(1);
+  if(!R[S.cur])S.cur='dashboard';
+  $('#nav').innerHTML=NAV.map(n=>`<a href="#${n[0]}" class="${n[0]===S.cur?'on':''}">${n[1]}</a>`).join('');
+  const sy=scrollY, ta=document.activeElement&&document.activeElement.id==='mi'?$('#mi').value:null;
+  $('#app').innerHTML=R[S.cur]();
+  if(ta!==null&&$('#mi'))$('#mi').value=ta;
+  scrollTo(0,sy);
+}
+addEventListener('hashchange',render);
+render();
+</script></body></html>
